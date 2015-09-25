@@ -1,0 +1,38 @@
+{% extends 'edcBundle::viewEDC.html.twig' %}
+
+{% block body %}
+     {% for flashMessage in app.session.flashbag.get('mensaje') %}
+    <span class="alert-success">
+        {{ flashMessage }}
+        <hr />
+    
+    </span>
+    {% endfor %}
+    
+    <h1>Subir Archivo</h1>
+    <form role="form" enctype="multipart/form-data" method="post" action="{{path('subirArchivo')}}">
+ 	  <div class="input-group">
+ 	  	<p>
+	      ARCHIVO 1: 
+	      <input type="file" name="archivo[]" class="form-control" id="exampleInputEmail2" />
+	    </p>
+	    <p>
+	      Nombre del archivo: 
+	      <input type="text" name="descArchivo[]" class="form-control" >
+	    </p>
+	  </div>
+	    <hr>
+	    <div class="input-group">
+	    	<p>
+		      ARCHIVO 2:
+		      <input type="file" name="archivo[]" class="form-control" id="exampleInputEmail2" />
+		    </p>
+		    <p>
+		      Nombre del archivo:
+		      <input type="text" name="descArchivo[]" class="form-control" >
+		    </p>
+	    </div>
+		<hr />
+	    <button type="submit" class="btn btn-default">Enviar</button>
+	</form>
+{% endblock %}
